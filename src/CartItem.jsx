@@ -16,8 +16,6 @@ const CartItem = ({ onContinueShopping }) => {
    
   };
 
-
-
   const handleIncrement = (item) => {
   };
 
@@ -25,7 +23,12 @@ const CartItem = ({ onContinueShopping }) => {
    
   };
 
-  const handleRemove = (item) => {
+  const handleRemove = (productName) => {
+    dispatch(removeItem(productName));
+  };
+
+  const handleUpdateQuantity = (productName, quantity) => {
+    dispatch(updateQuantity({ name: productName, quantity }));
   };
 
   // Calculate total cost based on quantity for an item
@@ -48,7 +51,7 @@ const CartItem = ({ onContinueShopping }) => {
                 <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
               </div>
               <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
-              <button className="cart-item-delete" onClick={() => handleRemove(item)}>Delete</button>
+              <button className="cart-item-delete" onClick={() => handleRemove(item.name)}>Delete</button>
             </div>
           </div>
         ))}
