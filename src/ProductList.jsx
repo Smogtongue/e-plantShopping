@@ -59,7 +59,7 @@ function ProductList({ onHomeClick }) {
                 {
                     name: "Hyacinth",
                     image: "https://cdn.pixabay.com/photo/2019/04/07/20/20/hyacinth-4110726_1280.jpg",
-                    description: "Hyacinth is a beautiful flowering plant known for its fragrant.",
+                    description: "Hyacinth is a beautiful flowering plant known for its fragrance.",
                     cost: "$22",
                     isOnSale: false
                 }
@@ -146,14 +146,14 @@ function ProductList({ onHomeClick }) {
         }
     ];
     const styleObj = {
-        backgroundColor: '#4CAF50',
+        backgroundColor: 'var(--eggplant)', // Use eggplant from the new color scheme // Bright green background
         color: '#fff!important',
         padding: '15px',
         display: 'flex',
         justifyContent: 'space-between',
         alignIems: 'center',
         fontSize: '20px',
-    }
+    };
     const styleObjUl = {
         display: 'flex',
         justifyContent: 'space-between',
