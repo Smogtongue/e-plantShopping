@@ -8,17 +8,18 @@ body, h1, ul {
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    font-size: 16px; /* Set base font size for rem calculations */
 }
 
 /* Navbar */
 .navbar {
     background-color: #4CAF50;
     color: #fff!important;
-    padding: 15px;
+    padding: 0.9375rem; /* 15px to rem */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px to rem */
 }
 
 .navbar .ul {
@@ -28,50 +29,63 @@ body {
     width: 1100px;
 }
 
-.navbar li {
-    margin-right: 30px;
-}
-
 .navbar .ul div a {
     color: white;
-    font-size: 30px;
+    font-size: 1.875rem; /* 30px to rem */
     text-decoration: none;
-   
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    height: 100%; /* Ensure it takes the full height of the navbar */
+    margin: 0 auto; /* Center the link relative to the page */
+    width: fit-content; /* Ensure the width is only as wide as the content */
 }
 
 /* Product Grid */
 .product-grid {
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 100vw;
     align-items: center;
     justify-content: center;
+    overflow: visible; /* Ensure SALE tags are not cut off by the grid container */
+    padding: 1.25rem; /* 20px to rem */
 }
-.product-list {
+
+.product-grid > div > h1 {
     display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
-    padding: 20px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+    justify-content: center; /* Center the category label horizontally */
+    align-items: center; /* Center the category label vertically */
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensure 3 cards per row */
+    gap: 2rem; /* 30px to rem */
+    justify-content: center; /* Center the grid within the container */
+    align-items: flex-start; /* Align cards to the top */
+    padding: 3rem; /* 30px to rem */
+    overflow: visible; /* Allow elements like SALE tags to extend beyond the grid */
 }
 
 /* Product Card */
 .product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
-    margin-bottom: 20px;
-    padding: 20px;
+    position: relative; /* Ensure the card is the reference point for the SALE tag */
+    flex: 0 0 18.75rem; /* 300px to rem */
+    max-width: 20rem; /* 300px to rem */
+    min-width:  20rem;
+    height: 22rem; /* 350px to rem */
+    margin-bottom: 1.25rem; /* 20px to rem */
+    padding: 1.25rem; /* 20px to rem */
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 0.0625rem solid #ccc; /* 1px to rem */
+    border-radius: 0.3125rem; /* 5px to rem */
     text-align: center;
-    position: relative;
-    
-    gap: 20px;
+    gap: 0.5rem; /* 20px to rem */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 0;
+    overflow: visible; /* Allow the SALE tag to extend beyond the card */
 }
 
 /* Pseudo-classes - Hover effect on product button */
@@ -81,96 +95,126 @@ body {
     z-index: 1;
 }
 
+.sale-tag {
+    position: absolute;
+    top: -1.25rem; /* 20px to rem */
+    right: -1.5625rem; /* 25px to rem */
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 0.3125rem 0.625rem; /* 5px 10px to rem */
+    font-size: 0.875rem; /* 14px to rem */
+    font-weight: bold;
+    border-radius: 0.3125rem; /* 5px to rem */
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 2px 5px to rem */
+    z-index: 2; /* Ensure it stays above the card */
+    pointer-events: none; /* Prevent the SALE tag from interfering with hover effects */
+}
+
 .product-title {
     font-weight: bold;
-    margin-bottom: 10px;
+    padding: 0.425rem; /* 10px to rem */
+}
+
+.product-description {
+    font-size: 0.725rem; /* 12px to rem */
+    color: #555;
+    margin: 0.5rem 0 0.25rem; /* Reduce bottom margin to minimize gap */
+    text-align: center;
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
+    line-height: 1.5; /* Add line height to prevent text cutoff */
+    overflow: visible; /* Ensure text is fully visible */
+}
+
+.product-cost {
+    font-size: 1rem; /* 16px */
+    font-weight: bold;
+    color: #333;
+    margin: 0.25rem 0; /* Reduce top and bottom margins for better alignment */
+    text-align: center; /* Center-align the price */
+    white-space: nowrap; /* Prevent price from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
 
 .product-price {
     color: #e74c3c;
     font-size: 1.2rem;
-    margin-bottom: 10px;
 }
 
 .product-image {
     max-width: 100%;
-    height: 200px; /* Adjust height for better consistency */
+    height: 9.375rem; /* 150px to rem */
+    object-fit: cover; /* Crop or shrink images uniformly to fit */
+    border-radius: 0.3125rem; /* 5px to rem */
 }
 
 .product-button {
     background-color: #e74c3c;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem; /* 10px 20px to rem */
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-    margin-top: 10px;
+    margin-top: 0.625rem; /* 10px to rem */
 }
 
 .product-button:hover {
     background-color: #c0392b;
 }
 
-/* Pseudo-elements - Sale badge */
-.product-card::before {
-    content: "SALE";
-    background-color: #e74c3c;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 10px;
-    border-radius: 0 0 0 5px;
-}
-.tag_home_link{
+.tag_home_link {
     display: flex;
-    /* background-color: red; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 50px;
+    margin-left: 3.125rem; /* 50px to rem */
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px to rem */
 }
-.tag_home_link h3{
-    font-size: 30px;
+
+.tag_home_link h3 {
+    font-size: 1.875rem; /* 30px to rem */
 }
-.tag a{
+
+.tag a {
     text-decoration: none;
 }
+
 .tag {
-    width: 400px;
+    width: 25rem; /* 400px to rem */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .tag img {
-    height: 70px;
-    width: 70px;
-    border-radius: 70%;
-    
+    height: 4.375rem; /* 70px to rem */
+    width: 4.375rem; /* 70px to rem */
+    border-radius: 50%;
 }
 
 .luxury {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 650px;
-    font-size: 19px;
+    width: 40.625rem; /* 650px to rem */
+    font-size: 1.1875rem; /* 19px to rem */
 }
-.cart{
+
+.cart {
     color: white;
     display: flex;
 }
-.cart_quantity_count{
-    margin-top: 16px;
-    margin-left: 27px;
-    position: absolute;
-    font-size: 29px;
 
+.cart_quantity_count {
+    margin-top: 1rem; /* 16px to rem */
+    margin-left: 1.6875rem; /* 27px to rem */
+    position: absolute;
+    font-size: 1.8125rem; /* 29px to rem */
 }
+
 .cart-icon-container {
     position: relative;
     display: inline-block;
@@ -178,89 +222,134 @@ body {
 
 .cart-quantity {
     position: absolute;
-    top: 18px;
-    right: 22px;
+    top: 1.125rem; /* 18px to rem */
+    right: 1.375rem; /* 22px to rem */
     color: white;
     border-radius: 50%;
-    padding: 3px 6px;
-    font-size: 22px;
+    padding: 0.1875rem 0.375rem; /* 3px 6px to rem */
+    font-size: 1.375rem; /* 22px to rem */
     font-weight: bold;
 }
-.plantname_heading{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-    /* background-color: yellow; */
+
+.plantname_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.plant_heading{
-    width: 400px;
+
+.plant_heading {
+    width: 25rem; /* 400px to rem */
     text-align: center;
-    margin: 20px;
-    border: 1px solid rgb(5, 4, 4);
+    margin: 1.25rem; /* 20px to rem */
+    border: 0.0625rem solid rgb(5, 4, 4); /* 1px to rem */
     border-left: none;
     border-right: none;
-
-    
 }
+
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
     .product-card {
-        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+        flex: 1 1 calc(50% - 1.25rem); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
+        max-width: calc(50% - 1.25rem); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
     }
 }
+
 /* ProductList.css */
+
+h1 {
+    text-align: center; /* Center the text */
+    margin: 1.25rem 0; /* 20px to rem */
+}
 
 .product-button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem; /* 10px 20px to rem */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1rem; /* 16px to rem */
+    margin: 0.25rem 0.125rem; /* 4px 2px to rem */
     transition-duration: 0.4s;
     cursor: pointer;
-  }
-  
-  .product-button:hover {
+}
+
+.product-button:hover {
     background-color: #45a049;
-  }
-  
-  .product-button.added-to-cart {
+}
+
+.product-button.added-to-cart {
     background-color: grey; /* Grey when product is added */
-  }
-  @media (max-width: 1200px) {
+}
+
+
+@media (max-width: 1200px) {
     .product-card {
-      flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
-      max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
+        flex: 1 1 calc(33.33% - 1.25rem); /* Adjust width for 3 cards per row with 20px gap on medium screens */
+        max-width: calc(33.33% - 1.25rem); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
     }
-  }
-  
-  @media (max-width: 768px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 cards per row */
+        gap: 1.25rem; /* 20px to rem */
+    }
     .product-card {
-      flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
-      max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
+        flex: 0 0 45%; /* Adjust card width for medium screens */
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 1 1 calc(50% - 1.25rem); /* Adjust width for 2 cards per row with 20px gap on small screens */
+        max-width: calc(50% - 1.25rem); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
     }
     .navbar {
         flex-direction: column; /* Change flex direction to stack items vertically */
         align-items: center; /* Align items to the center of the container */
-      }
-    
-      .tag {
-        margin-bottom: 20px; /* Add margin bottom for spacing */
+    }
+
+    .tag {
+        margin-bottom: 1.25rem; /* 20px to rem */
         text-align: center; /* Align text to the center */
-      }
-    
-      .ul {
+    }
+
+    .ul {
         display: flex; /* Set display to flex */
         flex-direction: column; /* Change flex direction to stack items vertically */
-        gap: 10px; /* Add gap between items */
-      }
-    
-      .ul div {
+        gap: 0.625rem; /* 10px to rem */
+    }
+
+    .ul div {
         text-align: center; /* Align text to the center */
-      }
-  }
+    }
+    .product-list {
+        grid-template-columns: repeat(1, 1fr); /* Adjust to 1 card per row */
+        gap: 0.9375rem; /* 15px to rem */
+    }
+    .product-card {
+        flex: 0 0 90%; /* Adjust card width for small screens */
+        max-width: 90%;
+    }
+    .sale-tag {
+        top: -0.9375rem; /* 15px to rem */
+        right: -0.9375rem; /* 15px to rem */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        gap: 0.625rem; /* 10px to rem */
+    }
+    .product-card {
+        flex: 0 0 100%; /* Full width for extra small screens */
+        max-width: 100%;
+    }
+    .product-image {
+        height: 7.5rem; /* 120px to rem */
+    }
+    .sale-tag {
+        font-size: 0.75rem; /* 12px to rem */
+        padding: 0.25rem 0.5rem; /* 4px 8px to rem */
+    }
+}

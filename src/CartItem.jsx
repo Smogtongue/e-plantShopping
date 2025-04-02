@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from './CartSlice';
+import { removeItem, updateQuantity, addItem } from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
@@ -27,19 +27,19 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 })); // Update quantity
   };
 
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
-      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 })); // Update quantity
     } else {
-      dispatch(removeItem(item.name));
+      dispatch(removeItem(item.name)); // Remove item from the cart
     }
   };
 
   const handleRemove = (productName) => {
-    dispatch(removeItem(productName));
+    dispatch(removeItem(productName)); // Remove item from the cart
   };
 
   const handleUpdateQuantity = (productName, quantity) => {
@@ -48,6 +48,8 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    const cost = parseFloat(item.cost.substring(1)); // Convert cost string to a number
+    return (item.quantity * cost).toFixed(2); // Calculate total cost and format to 2 decimal places
   };
 
   return (
