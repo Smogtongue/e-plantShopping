@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import ProductList from './ProductList';
 import './App.css';
@@ -25,7 +24,7 @@ function App() {
          <h1>Paradise Nursery</h1>
           <div className="divider"></div>
           <p>Take Me Back To Eden</p>
-         
+          <div className="divider"></div> {/* Re-added divider */}
           <button className="get-started-button" onClick={handleGetStartedClick}>
             Get Started
           </button>
