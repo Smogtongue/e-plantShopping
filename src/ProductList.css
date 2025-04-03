@@ -35,8 +35,9 @@ body {
 }
 
 .navbar .plants-link {
-    position: static; /* Remove absolute positioning */
-    transform: none; /* Remove centering transformation */
+    position: absolute;
+    left: 50%; /* Position the link in the center horizontally */
+    transform: translateX(-50%); /* Adjust for the link's width to truly center it */
     justify-content: center; /* Center-align the plants link */
     flex: 1; /* Ensure it takes up equal space */
 }
@@ -371,6 +372,8 @@ body {
     .navbar .tag,
     .navbar .plants-link,
     .navbar .cart-link {
+        position: static; /* Reset positioning for stacking */
+        transform: none; /* Remove centering transformation */
         flex: none; /* Remove flex-grow to stack items evenly */
         width: 100%; /* Ensure full width for each section */
         justify-content: center; /* Center-align items */
