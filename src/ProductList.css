@@ -13,20 +13,57 @@ body {
 
 /* Navbar */
 .navbar {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between the three sections */
+    align-items: center;
     background-color: var(--eggplant); /* Use eggplant for the navbar */
     color: white !important; /* Ensure text is white */
     padding: 0.9375rem; /* 15px to rem */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     font-size: 1.25rem; /* 20px to rem */
+    gap: 1rem; /* Add spacing between items */
+}
+
+.navbar .tag,
+.navbar .plants-link,
+.navbar .cart-link {
+    flex: 1; /* Ensure even spacing between the three sections */
+    display: flex;
+    justify-content: center; /* Center-align items within each section */
+    align-items: center;
+}
+
+.navbar .plants-link {
+    justify-content: center; /* Center-align the plants link */
+}
+
+.navbar .cart-link {
+    justify-content: flex-end; /* Align the cart link to the right */
+}
+
+.navbar a {
+    color: var(--mountbatten-pink); /* Use mountbatten pink for links */
+    font-size: 1.875rem; /* 30px to rem */
+    text-decoration: none;
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    height: 100%; /* Ensure it takes the full height of the navbar */
+    width: fit-content; /* Ensure the width is only as wide as the content */
+    transition: color 0.3s ease, transform 0.2s ease; /* Add smooth transition for hover effects */
+}
+
+.navbar a:hover {
+    color: var(--china-rose); /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the link on hover */
 }
 
 .navbar .ul {
     display: flex;
-    justify-content: space-between; /* Apply space-around for even spacing */
+    justify-content: center; /* Center-align the "Plants" button */
     align-items: center;
-    width: 1100px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    width: 100%; /* Ensure full width */
+    gap: 1rem; /* Add spacing between items */
 }
 
 .navbar .ul div a {
@@ -35,9 +72,22 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
     height: 100%; /* Ensure it takes the full height of the navbar */
     margin: 0 auto; /* Center the link relative to the page */
     width: fit-content; /* Ensure the width is only as wide as the content */
+}
+
+.navbar .tag {
+    justify-content: flex-start; /* Align the tag to the left */
+    font-size: 1rem; /* Reduce the font size explicitly */
+}
+
+.navbar .tag a {
+    text-decoration: none; /* Ensure no underline */
+    color: white; /* Keep the text color consistent */
+    pointer-events: none; /* Disable hover effects */
+    font-size: inherit; /* Ensure it inherits the font size from .tag */
 }
 
 /* Product Grid */
@@ -119,7 +169,7 @@ body {
 }
 
 .product-description {
-    font-size: 0.725rem; /* 12px to rem */
+    font-size: 0.7rem; /* 12px to rem */
     color: white; /* Revert text color to white */
     margin: 0.5rem 0 0.25rem; /* Reduce bottom margin to minimize gap */
     text-align: center;
@@ -138,6 +188,7 @@ body {
     white-space: nowrap; /* Prevent price from wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    padding-bottom: 1rem;
 }
 
 .product-price {
@@ -191,10 +242,11 @@ body {
 }
 
 .tag {
-    width: 25rem; /* 400px to rem */
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: min-content;
+    margin-right: 2rem;
 }
 
 .tag img {
@@ -202,13 +254,14 @@ body {
     width: 4.375rem; /* 70px to rem */
     border-radius: 50%;
     margin: 0.25rem; /* 4px to rem */
+    margin-right: 0.5rem; /* 8px to rem */
 }
 
 .luxury {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40.625rem; /* 650px to rem */
+    width: 25rem; /* 650px to rem */
     font-size: 1.1875rem; /* 19px to rem */
 }
 
@@ -228,16 +281,51 @@ body {
 .cart-icon-container {
     position: relative;
     display: inline-block;
+    width: 68px; /* Match the SVG width */
+    height: 68px; /* Match the SVG height */
 }
 
 .cart-quantity {
     position: absolute;
-    top: 1.125rem; /* 18px to rem */
-    right: 1.375rem; /* 22px to rem */
+    top: 50%; /* Adjust to center vertically */
+    right: 49%; /* Adjust to center horizontally */
     color: white;
-    padding: 0.1875rem 0.375rem; /* 3px 6px to rem */
-    font-size: 1.375rem; /* 22px to rem */
+    border-radius: 50%; /* Make it circular */
+    padding: 0.2rem 0.4rem; /* Add padding for better appearance */
+    font-size: 1rem; /* Base font size */
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(50%, -50%); /* Fine-tune centering */
+    min-width: 1.5rem; /* Ensure a minimum size for the circle */
+    min-height: 1.5rem; /* Ensure a minimum size for the circle */
+}
+
+.cart-quantity span {
+    display: inline-block;
+    text-align: center;
+    line-height: 1; /* Ensure text is vertically centered */
+}
+
+@media (max-width: 768px) {
+    .cart-quantity {
+        font-size: 0.875rem; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-quantity {
+        font-size: 0.75rem; /* Further reduce font size for very small screens */
+    }
+}
+
+.cart-quantity[data-length="2"] {
+    font-size: 0.9rem; /* Adjust font size for double digits */
+}
+
+.cart-quantity[data-length="3"] {
+    font-size: 0.8rem; /* Adjust font size for triple digits */
 }
 
 .plantname_heading {
@@ -260,6 +348,58 @@ body {
     .product-card {
         flex: 1 1 calc(50% - 1.25rem); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
         max-width: calc(50% - 1.25rem); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: center; /* Center-align items */
+        padding: 1rem; /* Add padding for smaller screens */
+    }
+
+    .navbar .tag,
+    .navbar .nav-links {
+        flex: none; /* Remove flex-grow to stack items evenly */
+        width: 100%; /* Ensure full width for each section */
+        justify-content: center; /* Center-align items */
+        margin-bottom: 0.5rem; /* Add spacing between stacked items */
+    }
+
+    .navbar .nav-links a {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+    }
+
+    .navbar .ul {
+        flex-direction: column; /* Stack links vertically */
+        gap: 0.5rem; /* Reduce spacing between items */
+    }
+
+    .navbar .ul div a {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        gap: 0.625rem; /* 10px to rem */
+    }
+    .product-card {
+        flex: 0 0 100%; /* Full width for extra small screens */
+        max-width: 100%;
+    }
+    .product-image {
+        height: 7.5rem; /* 120px to rem */
+    }
+    .sale-tag {
+        font-size: 0.75rem; /* 12px to rem */
+        padding: 0.25rem 0.5rem; /* 4px 8px to rem */
+    }
+
+    .navbar {
+        padding: 0.5rem; /* Further reduce padding for very small screens */
+    }
+
+    .navbar .nav-links a {
+        font-size: 1.25rem; /* Further reduce font size */
     }
 }
 

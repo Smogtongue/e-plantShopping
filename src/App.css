@@ -101,24 +101,27 @@
 /* ProductList.css */
 
 .product-list-container {
-  position: absolute;
-  overflow-x:hidden;
+  position: fixed; /* Change to fixed to remove it from the document flow */
+  overflow-y: hidden;
   top: 100vh; /* Position it off-screen */
   left: 0;
   width: 100%;
   height: 100vh;
   background-color: #0f0707e1;
-  transition: top 0.5s ease;
+  transition: top 0.5s ease, opacity 0.5s ease; /* Include opacity for transition */
   overflow-y: auto;
   z-index: 2;
   backdrop-filter: blur(5px);
+  opacity: 0; /* Start with full transparency */
+  pointer-events: none; /* Prevent interaction when hidden */
+  visibility: hidden; /* Ensure it's hidden by default */
 }
 
 .product-list-container.visible {
   top: 0;
-  visibility: visible; /* Show the container when visible */
+  opacity: 1; /* Make it fully opaque */
   pointer-events: auto; /* Enable interaction when visible */
-  display: block; /* Make it visible when active */
+  visibility: visible; /* Make it visible when active */
 }
 
 /* LandingPage.css */
