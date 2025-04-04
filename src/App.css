@@ -17,33 +17,35 @@
 .landing-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  background-color: var(--davys-gray); /* Replace bright background with davys gray */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  min-height: 100vh; /* Ensure the landing page covers the full viewport height */
+  background-color: var(--davys-gray); /* Fallback background color */
+  overflow-y: auto; /* Allow vertical scrolling */
+  z-index: 1; /* Ensure content is above the background image */
 }
 
 .background-image {
-  position: absolute;
+  position: fixed; /* Fix the background image to the viewport */
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Ensure it covers the full viewport height */
   background-image: url('https://www.nme.com/wp-content/uploads/2025/03/Sleep-token-album@2000x2000.jpg');
   background-size: cover;
   background-position: center;
   filter: brightness(0.5); /* Adjust brightness to complement the new palette */
+  z-index: -1; /* Place it behind all other content */
 }
 
 .content {
   display: flex;
-  align-items: center; /* Center vertically */;
-  justify-content: flex-start; 
+  align-items: center; /* Center vertically */
+  justify-content: flex-start;
   flex-direction: row; /* Stack vertically */
-  height: 100%; 
+  min-height: 100vh; /* Ensure the content area matches the viewport height */
   width: 100%;
   padding: 0 2rem; /* Add horizontal padding */
   backdrop-filter: blur(0.5px);
-  background-color: rgba(24, 15, 19, 0.74);
+  background-color: rgba(24, 15, 19, 0.74); /* Ensure the background color filter covers the full height */
   gap: 20px;
 }
 
@@ -138,13 +140,17 @@
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh; /* Ensure the content area matches the viewport height */
   }
 
   .landing_content {
     margin-top: 4rem; /* Ensure enough space at the top for smaller screens */
     padding-top: 1rem; /* Add padding to prevent cutoff */
     width: 90%;
+  }
+
+  .background-image {
+    height: 100vh; /* Ensure the background image covers the full viewport height on mobile */
   }
 
   .content h1 {

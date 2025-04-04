@@ -136,21 +136,20 @@ body {
     position: relative; /* Ensure the card is the reference point for the SALE tag */
     flex: 0 0 18.75rem; /* 300px to rem */
     max-width: 20rem; /* 300px to rem */
-    min-width:  20rem;
-    height: 22rem; /* 350px to rem */
+    min-width: 20rem;
+    height: auto; /* Allow height to adjust dynamically */
     margin-bottom: 1.25rem; /* 20px to rem */
     padding: 1.25rem; /* 20px to rem */
     background-color: var(--wenge); /* Use wenge for product cards */
     color: white; /* Revert product card text color to white */
-    border: 0.0625rem solid var(davies-grey); /* 1px to rem */
+    border: 0.0625rem solid var(--davys-gray); /* 1px to rem */
     border-radius: 0.3125rem; /* 5px to rem */
     text-align: center;
-    gap: 0.5rem; /* 20px to rem */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-grow: 0;
-    overflow: visible; /* Allow the SALE tag to extend beyond the card */
+    gap: 0.5rem; /* Add consistent spacing between elements */
+    overflow: visible; /* Ensure SALE tags are not cut off */
 }
 
 /* Pseudo-classes - Hover effect on product button */
@@ -177,36 +176,31 @@ body {
 
 .product-title {
     font-weight: bold;
-    padding: 0.425rem; /* 10px to rem */
+    padding: 0.2rem; /* Adjust padding for spacing */
     color: white; /* Revert text color to white */
+    margin-bottom: 0.5rem; /* Add spacing below the title */
 }
 
 .product-description {
-    font-size: 0.7rem; /* 12px to rem */
+    font-size: 0.875rem; /* 14px to rem */
     color: white; /* Revert text color to white */
-    margin: 0.5rem 0 0.25rem; /* Reduce bottom margin to minimize gap */
+    margin: 0.5rem 0; /* Add spacing above and below */
     text-align: center;
     white-space: normal; /* Allow text to wrap */
     word-wrap: break-word; /* Break long words */
-    line-height: 1.5; /* Add line height to prevent text cutoff */
-    overflow: visible; /* Ensure text is fully visible */
+    line-height: 1; /* Add line height for readability */
+    min-height: 2.5rem; /* Ensure consistent height for descriptions */
 }
 
 .product-cost {
     font-size: 1rem; /* 16px */
     font-weight: bold;
-    color: white; /* Revert text color to white */
-    margin: 0.25rem 0; /* Reduce top and bottom margins for better alignment */
+    color: rgb(248, 117, 117); /* Revert text color to white */
+    margin: 0.5rem 0; /* Add spacing above and below */
     text-align: center; /* Center-align the price */
     white-space: nowrap; /* Prevent price from wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Add ellipsis for overflowed text */
-    padding-bottom: 1rem;
-}
-
-.product-price {
-    color: #e74c3c;
-    font-size: 1.2rem;
 }
 
 .product-image {
@@ -223,7 +217,8 @@ body {
     padding: 0.625rem 1.25rem; /* 10px 20px to rem */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease; /* Add transition for transform */
-    margin-top: 0.625rem; /* 10px to rem */
+    margin-top: auto; /* Push the button to the bottom of the card */
+    align-self: center; /* Center the button horizontally */
 }
 
 .product-button:hover {
